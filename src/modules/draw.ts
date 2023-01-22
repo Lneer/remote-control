@@ -1,4 +1,4 @@
-import {MouseClass, providerRegistry, ScreenClass} from '@nut-tree/nut-js'
+import {MouseClass, providerRegistry} from '@nut-tree/nut-js'
 
 const mouse = new MouseClass(providerRegistry)
 
@@ -23,7 +23,7 @@ export async function drawHandler (msg:string) {
         case 'draw_circle':
             const circleCenter = {...mousePosition}
             const circleStart = {...circleCenter, x:circleCenter.x + Number(height)}
-            // mouse.setPosition(circleStart)
+            mouse.setPosition(circleStart)
             let prev = circleStart
             for (let i = 0; i <=45; i++) {
                 const nextX = Math.cos(2 * Math.PI * i / 45) * Number(height) + Number(circleCenter.x)

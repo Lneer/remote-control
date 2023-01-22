@@ -4,6 +4,7 @@ import { Key } from '@nut-tree/nut-js/dist/lib/key.enum';
 import { Point } from '@nut-tree/nut-js/dist/lib/point.class';
 import { arrowPressHandler } from './modules/mouse';
 import { drawHandler } from './modules/draw';
+import { screenCapture } from './modules/print';
 
 const PORT = process.env.PORT || 3000;
 
@@ -24,6 +25,10 @@ function onConnect(wsClient:WebSocket) {
         } 
         else if ( messageToStr.includes('draw')){
             drawHandler(messageToStr)
+        }
+        else if (messageToStr === 'prnt_scrn') {
+            screenCapture(messageToStr)
+            .then((msg) => wsClient.send(msg))
         }
         else {
             console.log (messageToStr)
