@@ -34,7 +34,7 @@ export async function drawCircle(radius:number):Promise<void> {
   const circleStart = { ...circleCenter, x: circleCenter.x + radius };
   mouse.setPosition(circleStart);
   let prev = circleStart;
-  for (let i = 0; i <= 45; i + 1) {
+  for (let i = 0; i <= 45; i += 1) {
     const nextX = Math.cos(2 * Math.PI * (i / 45)) * radius + circleCenter.x;
     const nextY = Math.sin(2 * Math.PI * (i / 45)) * radius + circleCenter.y;
     const next = { x: nextX, y: nextY };

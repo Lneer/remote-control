@@ -1,5 +1,6 @@
 {
     "scripts": {
+        "start:prod": "cross-env NODE_ENV=production tsc && node dist/index.js",
         "start:dev": "nodemon ./src/index.ts",
         "lint": "eslint . --ext .ts --fix "
     },

@@ -11,7 +11,7 @@ const server = new WebSocket.Server({ port: PORT });
 console.log(`Server started on ${PORT} port`);
 
 function onConnect(wsClient:WebSocket) {
-  console.log('New User');
+  console.log('Client connected');
   wsClient.on('message', (message) => {
     const messageToStr = message.toString();
     console.log(`Message from Front: ${messageToStr}`);
