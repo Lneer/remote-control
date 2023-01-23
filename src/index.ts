@@ -28,7 +28,8 @@ function onConnect(wsClient:WebSocket) {
         }
         else if (messageToStr === 'prnt_scrn') {
             screenCapture(messageToStr)
-            .then((msg) => wsClient.send(msg))
+            .then((msg) => { 
+                wsClient.send(`prnt_scrn ${msg}`)})
         }
         else {
             console.log (messageToStr)

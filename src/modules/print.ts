@@ -10,13 +10,12 @@ export async function screenCapture(cmd:string) {
     const mousePosition = await mouse.getPosition();
     const captureRegion = new Region(mousePosition.x-REGION_SIZE,mousePosition.y - REGION_SIZE , 2*REGION_SIZE, 2*REGION_SIZE)
     const currentScreen = await providerRegistry.getScreen().grabScreenRegion(captureRegion);
-    console.log(currentScreen.data);
     
-   Jimp.read(currentScreen.data)
-    .then((screen) => screen.getBase64Async(Jimp.MIME_PNG))
-    .then ((image64) => console.log(image64))
-    .catch((err) => err.message)
-    // await screen.captureRegion('screen', captureRegion)
-    return `prnt_scrn ${currentScreen.data.toString('base64')}`
-    
+    const jimpImage = new Jimp({ data:currentScreen.data, width:currentScreen.width, height:currentScreen.height}, (err, image) => {
+        if (err) throw err;
+        return image
+    } )
+
+    const strindedJimpImage = await jimpImage.getBase64Async(Jimp.MIME_PNG)
+    return strindedJimpImage.split(',')[1];   
 }
