@@ -1,9 +1,7 @@
-import {MouseClass, providerRegistry} from '@nut-tree/nut-js'
-
-const mouse = new MouseClass(providerRegistry)
-
+import {mouse} from '../constants'
 
 export async function  arrowPressHandler(direct: string) {
+    try {
     const [cmd, dist] = direct.split(' ')
     const mousePosition = await mouse.getPosition()
     switch (cmd) {
@@ -23,12 +21,10 @@ export async function  arrowPressHandler(direct: string) {
             return `mouse_position ${mousePosition.x},${mousePosition.y}`;
            
     }
+    } catch (error) {
+        console.error((error as Error).message);
+        
+    }
     
 
-    // const height = await screen.height()
-    // const width = await screen.width()
-    // mouse.setPosition(newMousePosition)
-    // console.log(height, width);
-    // console.log(mousePosition);
-    
 }
