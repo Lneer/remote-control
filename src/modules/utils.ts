@@ -1,5 +1,5 @@
 import { Region } from '@nut-tree/nut-js';
-import { screen, mouse } from './constants';
+import { screen, mouse } from '../constants';
 
 export async function createCaptureRegion(areaWidth:number, areaHeight = areaWidth): Promise<Region> {
   const screenHeight = await screen.height();

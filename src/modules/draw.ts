@@ -1,4 +1,4 @@
-import { drawCircle, drawRectangle } from '../utils';
+import { drawCircle, drawRectangle } from './utils';
 
 export async function drawHandler(msg:string) {
   try {

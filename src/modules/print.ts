@@ -1,6 +1,6 @@
 import { providerRegistry } from '@nut-tree/nut-js';
 import Jimp from 'jimp';
-import { createCaptureRegion } from '../utils';
+import { createCaptureRegion } from './utils';
 
 const REGION_SIZE = 100;
 
